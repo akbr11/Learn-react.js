@@ -1,6 +1,7 @@
 import React from "react";
 
-class Hello extends React.Component {
+class State extends React.Component {
+  /* Implementation components state */
   constructor() {
     super();
     this.state = {
@@ -15,6 +16,8 @@ class Hello extends React.Component {
     });
   };
 
+  /* End Implementation components state */
+
   render() {
     return (
       <div>
@@ -27,4 +30,4 @@ class Hello extends React.Component {
   }
 }
 
-export default Hello;
+export default State;
