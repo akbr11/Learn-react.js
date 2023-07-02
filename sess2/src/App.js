@@ -18,7 +18,7 @@ function App() {
         <h1>Item : </h1>
         <ul>
           <Item isPacked={true} name="Jeruk" />
-          <Item isPacked={false} name="Apel" />
+          <Item isPacked={true} name="Apel" />
         </ul>
       </section>
       {/* end Conditional with Ternary Operators */}
