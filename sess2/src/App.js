@@ -6,6 +6,7 @@ const phoneData = [
   { name: "iPhone X", price: "10000000", discount: "50" },
   { name: "Oppo Find X", price: "140000000", discount: "30" },
   { name: "Redmi Note X", price: "12000000", discount: "42" },
+  { name: "Vivo XYZ", price: 10000000, discount: 0 },
 ];
 
 function App() {
