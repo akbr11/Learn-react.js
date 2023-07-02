@@ -1,5 +1,6 @@
 // import logo from "./logo.svg";
 import Product from "./components/Product";
+import Item from "./components/Item";
 import "./App.css";
 
 const phoneData = [
@@ -11,7 +12,21 @@ const phoneData = [
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      {/* Conditional with Ternary Operators */}
+      <section>
+        <h1>Item : </h1>
+        <ul>
+          <Item isPacked={true} name="Jeruk" />
+          <Item isPacked={false} name="Apel" />
+        </ul>
+      </section>
+      {/* end Conditional with Ternary Operators */}
+
+      <br />
+      <br />
+
+      {/* Looping using Map */}
       {phoneData.map((phone, id) => (
         <Product
           key={id}
@@ -20,6 +35,7 @@ function App() {
           discount={phone.discount}
         ></Product>
       ))}
+      {/* end Looping using Map */}
     </div>
   );
 }
