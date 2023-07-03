@@ -1,6 +1,8 @@
 // import logo from "./logo.svg";
 import Product from "./components/Product";
 import Item from "./components/Item";
+import { peopleData } from "./components/assets/Data";
+import { getImageUrl } from "./components/assets/Utils";
 import "./App.css";
 
 const phoneData = [
@@ -13,6 +15,21 @@ const phoneData = [
 function App() {
   return (
     <div>
+      {/* Rendering List */}
+      <ul>
+        {peopleData.map((person) => (
+          <li key={person.id}>
+            <img src={getImageUrl(person)} alt={person.name} />
+            <p>
+              <b>{person.name}</b>
+              {" " + person.profession + " "}
+              known for {person.accomplishment}
+            </p>
+          </li>
+        ))}
+      </ul>
+      {/* end Rendering List */}
+
       {/* Conditional with Ternary Operators */}
       <section>
         <h1>Item : </h1>
