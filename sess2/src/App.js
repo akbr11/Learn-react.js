@@ -1,6 +1,8 @@
 // import logo from "./logo.svg";
 import Product from "./components/Product";
 import Item from "./components/Item";
+import Recipe from "./components/Recipe";
+import Cup from "./components/Cup";
 import { peopleData } from "./components/assets/Data";
 import { getImageUrl } from "./components/assets/Utils";
 import "./App.css";
@@ -15,6 +17,30 @@ const phoneData = [
 function App() {
   return (
     <div>
+      {/* Local Mutation */}
+      <section>
+        <Cup guest={2} />
+        <Cup guest={3} />
+        <Cup guest={4} />
+      </section>
+      {/* end Local Mutation */}
+
+      <br />
+      <br />
+
+      {/* Purity of components as formula */}
+      <section>
+        <h1>Spiced Chai Recipe</h1>
+        <h2>For two</h2>
+        <Recipe drinkers={2} />
+        <h2>For a gathering</h2>
+        <Recipe drinkers={4} />
+      </section>
+      {/* end Purity of components as formula */}
+
+      <br />
+      <br />
+
       {/* Rendering List */}
       <ul>
         {peopleData.map((person) => (
@@ -29,6 +55,9 @@ function App() {
         ))}
       </ul>
       {/* end Rendering List */}
+
+      <br />
+      <br />
 
       {/* Conditional with Ternary Operators */}
       <section>
