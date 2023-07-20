@@ -3,8 +3,12 @@ import Product from "./components/Product";
 import Item from "./components/Item";
 import Recipe from "./components/Recipe";
 import Cup from "./components/Cup";
+import Alertbutton from "./components/AlertButton";
 import { peopleData } from "./components/assets/Data";
 import { getImageUrl } from "./components/assets/Utils";
+
+import { useState } from "react";
+import { Datas } from "./components/assets/Datas";
 import "./App.css";
 
 const phoneData = [
@@ -15,8 +19,39 @@ const phoneData = [
 ];
 
 function App() {
+  const [index, setIndex] = useState(0);
+
+  function handleClick() {
+    setIndex(index + 1);
+  }
+
+  function handleClickPrev() {
+    setIndex(index - 1);
+  }
+
+  let sculpture = Datas[index];
   return (
     <div>
+      {/* slide button next and previous */}
+      <>
+        <button onClick={handleClickPrev}>Previous</button>
+        <button onClick={handleClick}>Next</button>
+        <h2>
+          <i>{sculpture.name} </i>
+          by {sculpture.artist}
+        </h2>
+        <h3>
+          ({index + 1} of {Datas.length})
+        </h3>
+        <img src={sculpture.url} alt={sculpture.alt} />
+        <p>{sculpture.description}</p>
+      </>
+      {/* end slide button next and previous */}
+
+      {/* Alert */}
+      <Alertbutton message="Playing">Play</Alertbutton>
+      {/* end Alert */}
+
       {/* Local Mutation */}
       <section>
         <Cup guest={2} />
