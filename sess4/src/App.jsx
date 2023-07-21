@@ -13,14 +13,17 @@ export default function Board() {
     setXIsNext(!xIsNext);
   }
 
+  function handleRestart() {
+    setSquares(Array(9).fill(null));
+    setXIsNext(true);
+  }
+
   const winner = calculate(squares);
 
   let status = "";
-  if (winner) {
-    status = "Winner : " + winner;
-  } else {
-    status = "Next Player : " + (xIsNext ? "X" : "O");
-  }
+  winner
+    ? (status = "Winner : " + winner)
+    : (status = "Next Player : " + (xIsNext ? "X" : "O"));
 
   return (
     <>
@@ -34,6 +37,7 @@ export default function Board() {
           />
         ))}
       </div>
+      <button onClick={handleRestart}>Restart</button>
     </>
   );
 }
