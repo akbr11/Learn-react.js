@@ -24,7 +24,7 @@ const ProductPage = () => {
   return (
     <div className="flex justify-center py-5">
       {products.map((product) => (
-        <CardProducts>
+        <CardProducts key={product.id}>
           <CardProducts.Header image={product.image} />
           <CardProducts.Body name={product.name}>
             {product.description}
