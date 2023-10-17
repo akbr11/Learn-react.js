@@ -59,7 +59,7 @@ const ProductPage = () => {
         </Button>
       </div>
       <div className="flex justify-center py-5">
-        <div className="w-3/4 flex flex-wrap">
+        <div className="w-4/6 flex flex-wrap">
           {products.map((product) => (
             <CardProducts key={product.id}>
               <CardProducts.Header image={product.image} />
@@ -74,7 +74,7 @@ const ProductPage = () => {
             </CardProducts>
           ))}
         </div>
-        <div className="w-1/4">
+        <div className="w-3/2">
           <h1 className="text-3xl font-bold text-blue-600 ml-5 mb-2">Cart</h1>
 
           <table className="text-left table-auto border-separate border-spacing-x-5">
