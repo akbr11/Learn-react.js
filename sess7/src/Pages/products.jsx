@@ -1,6 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import CardProducts from "../component/Fragments/CardProducts";
 import Button from "../component/Elements/Button";
+import Counter from "../component/Fragments/Counter";
 
 const products = [
   {
@@ -25,12 +26,19 @@ const products = [
 const email = localStorage.getItem("email");
 
 const ProductPage = () => {
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      qty: 1,
-    },
-  ]);
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  useEffect(() => {
+    setCart([{ id: 1, qty: 1 }]);
+  }, []);
+
+  useEffect(() => {
+    const sum = cart.reduce((acc, item) => {
+      const product = products.find((product) => product.id === item.id);
+      return acc + product.price * item.qty;
+    }, 0);
+    setTotalPrice(sum);
+  }, [cart]);
 
   const handlerLogout = () => {
     localStorage.removeItem("email");
@@ -111,6 +119,18 @@ const ProductPage = () => {
                   </tr>
                 );
               })}
+              <tr>
+                <td colSpan={3}>
+                  <b>Total Price</b>
+                </td>
+                <td>
+                  Rp.{" "}
+                  {totalPrice.toLocaleString("id-ID", {
+                    styles: "currency",
+                    currency: "IDR",
+                  })}
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
