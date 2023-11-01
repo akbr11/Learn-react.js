@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import CardProducts from "../component/Fragments/CardProducts";
 import Button from "../component/Elements/Button";
 import Counter from "../component/Fragments/Counter";
-import { getProducts } from "../../../sess4/src/services/productData";
+import { getProducts } from "../services/productData";
 
 // const products = [
 //   {
