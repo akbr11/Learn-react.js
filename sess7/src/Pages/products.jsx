@@ -3,6 +3,7 @@ import CardProducts from "../component/Fragments/CardProducts";
 import Button from "../component/Elements/Button";
 import Counter from "../component/Fragments/Counter";
 import { getProducts } from "../services/productData";
+import { getUsername } from "../services/auth";
 
 // const products = [
 //   {
@@ -24,16 +25,24 @@ import { getProducts } from "../services/productData";
 //   },
 // ];
 
-const email = localStorage.getItem("email");
-
 const ProductPage = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || []);
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/";
+    } else {
+      setUsername(getUsername(token));
+    }
+  });
 
   useEffect(() => {
     getProducts((data) => {
@@ -53,8 +62,7 @@ const ProductPage = () => {
   }, [cart, products]);
 
   const handlerLogout = () => {
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
+    localStorage.removeItem("token");
     window.location.href = "/";
   };
 
@@ -97,7 +105,7 @@ const ProductPage = () => {
   return (
     <Fragment>
       <div className="flex justify-end h-20 bg-blue-600 text-white items-center px-10">
-        {email}
+        {username}
         <Button variant="ml-5 bg-black" onClick={handlerLogout}>
           Logout
         </Button>
@@ -124,10 +132,12 @@ const ProductPage = () => {
 
           <table className="text-left table-auto border-separate border-spacing-x-5">
             <thead>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
             </thead>
             <tbody>
               {products.length > 0 &&
