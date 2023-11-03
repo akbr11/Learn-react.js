@@ -1,29 +1,8 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import CardProducts from "../component/Fragments/CardProducts";
 import Button from "../component/Elements/Button";
-import Counter from "../component/Fragments/Counter";
 import { getProducts } from "../services/productData";
 import { getUsername } from "../services/auth";
-
-// const products = [
-//   {
-//     id: 1,
-//     name: "Sepatu Baru",
-//     price: 1000000,
-//     image: "/images/shoes.jpg",
-//     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis sequi
-//         asperiores quaerat eaque omnis harum repudiandae voluptatem ea officia
-//         totam natus corporis, magnam ullam delectus sed laudantium vitae
-//         mollitia rerum!`,
-//   },
-//   {
-//     id: 2,
-//     name: "Sepatu Lama",
-//     price: 4000000,
-//     image: "/images/shoes.jpg",
-//     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. `,
-//   },
-// ];
 
 const ProductPage = () => {
   const [cart, setCart] = useState([]);
